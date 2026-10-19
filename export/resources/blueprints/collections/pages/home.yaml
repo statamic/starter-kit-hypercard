@@ -1,0 +1,15 @@
+title: Index
+tabs:
+  main:
+    display: Content
+    sections:
+      - fields:
+          - handle: title
+            field:
+              type: text
+              display: Title
+              validate: required
+          - handle: intro
+            field:
+              type: text
+              display: Introduction

@@ -1,0 +1,760 @@
+:root {
+    color-scheme: light;
+    --ink: #111;
+    --paper: #fff;
+    --font-ui: "Courier New", Courier, monospace;
+    --font-book: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+}
+
+html {
+    scrollbar-gutter: stable;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
+body {
+    margin: 0;
+    color: var(--ink);
+    background-color: #e5e5e5;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Cpath d='M0 0h1v1H0zM2 2h1v1H2z' fill='%23000'/%3E%3C/svg%3E");
+    font-family: var(--font-ui);
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    font: inherit;
+}
+
+button:not(:disabled),
+a {
+    cursor: pointer;
+}
+
+::selection {
+    color: var(--paper);
+    background: var(--ink);
+}
+
+:focus-visible {
+    outline: 2px dotted var(--ink);
+    outline-offset: 5px;
+}
+
+.journal {
+    isolation: isolate;
+    display: flex;
+    min-height: 100svh;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 28px;
+    width: min(100% - 96px, 824px);
+    margin-inline: auto;
+    padding-block: 64px 48px;
+}
+
+.stack {
+    position: relative;
+    isolation: isolate;
+}
+
+.stack::before,
+.stack::after {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    border: 2px solid var(--ink);
+    border-radius: 18px;
+    background: var(--paper);
+    content: "";
+}
+
+.stack::before {
+    transform: translate(12px, 12px);
+}
+
+.stack::after {
+    transform: translate(6px, 6px);
+}
+
+.card {
+    overflow: hidden;
+    border: 2px solid var(--ink);
+    border-radius: 18px;
+    background: var(--paper);
+}
+
+.masthead {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px 38px 19px;
+    border-bottom: 1px solid rgb(0 0 0 / 18%);
+}
+
+.journal-name {
+    font-family: var(--font-book);
+    font-size: 23px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.journal-name:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.card-number {
+    margin: 0;
+    font-size: 14px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.card-content {
+    min-height: 500px;
+    padding: 28px 46px 12px;
+}
+
+.entry-heading {
+    position: relative;
+    display: flex;
+    min-height: 166px;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 20px;
+}
+
+.entry-heading-text {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.date {
+    margin: 0 0 15px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+h1 {
+    max-width: 21ch;
+    margin: 0;
+    font-family: var(--font-book);
+    font-size: clamp(30px, 3.5vw, 38px);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    text-wrap: pretty;
+}
+
+h1:focus {
+    outline: none;
+}
+
+.landscape {
+    flex-shrink: 0;
+    width: 240px;
+    height: auto;
+    image-rendering: pixelated;
+}
+
+.prose {
+    max-width: 64ch;
+    font-size: 16px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.prose :where(p, h1, h2, h3, h4, h5, h6, ul, ol, dl, blockquote, pre, figure, table, details, hr) {
+    margin: 0;
+}
+
+.prose > * + * {
+    margin-top: 22px;
+}
+
+.prose p {
+    text-wrap: pretty;
+}
+
+.prose :where(h1, h2, h3, h4, h5, h6) {
+    max-width: none;
+    font-family: var(--font-book);
+    font-weight: 600;
+    text-wrap: pretty;
+    scroll-margin-top: 24px;
+}
+
+.prose :where(h1, h2) {
+    font-size: 30px;
+    letter-spacing: -0.025em;
+}
+
+.prose h3 {
+    font-size: 24px;
+    letter-spacing: -0.015em;
+}
+
+.prose h4 {
+    font-size: 21px;
+}
+
+.prose h5 {
+    font-size: 18px;
+}
+
+.prose h6 {
+    font-family: var(--font-ui);
+    font-size: 16px;
+}
+
+.prose > :where(h1, h2, h3, h4, h5, h6):not(:first-child) {
+    margin-top: 42px;
+}
+
+.prose :where(h1, h2, h3, h4, h5, h6) + * {
+    margin-top: 12px;
+}
+
+.prose a {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+}
+
+.prose a:hover {
+    color: var(--paper);
+    background: var(--ink);
+    text-decoration: none;
+}
+
+.prose :where(strong, b) {
+    font-weight: 700;
+}
+
+.prose mark {
+    padding-inline: 3px;
+    color: var(--ink);
+    background: #e5e5e5;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+.prose abbr[title] {
+    text-decoration: underline dotted;
+    text-underline-offset: 4px;
+    cursor: help;
+}
+
+.prose :where(sup, sub) {
+    line-height: 0;
+}
+
+.prose :where(ul, ol) {
+    padding-left: 27px;
+}
+
+.prose ul {
+    list-style-type: square;
+}
+
+.prose ol {
+    list-style-type: decimal;
+}
+
+.prose li {
+    padding-left: 5px;
+}
+
+.prose li + li,
+.prose li > * + * {
+    margin-top: 9px;
+}
+
+.prose li > :where(ul, ol) {
+    margin-top: 10px;
+}
+
+.prose ul ul {
+    list-style-type: circle;
+}
+
+.prose ol ol {
+    list-style-type: lower-alpha;
+}
+
+.prose li::marker {
+    font-weight: 600;
+}
+
+.prose .task-list {
+    padding-left: 0;
+    list-style: none;
+}
+
+.prose .task-list li {
+    padding-left: 0;
+}
+
+.task-list label {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.task-list input {
+    flex-shrink: 0;
+    width: 17px;
+    height: 17px;
+    margin: 0;
+    accent-color: var(--ink);
+}
+
+.prose blockquote {
+    padding: 4px 0 4px 24px;
+    border-left: 3px solid var(--ink);
+    font-family: var(--font-book);
+    font-size: 23px;
+    line-height: 1.6;
+}
+
+.prose blockquote > * + * {
+    margin-top: 16px;
+}
+
+.prose blockquote cite {
+    display: block;
+    font-family: var(--font-ui);
+    font-size: 14px;
+    font-style: normal;
+    line-height: 1.75;
+}
+
+.prose hr {
+    height: 5px;
+    border: 0;
+    background-image: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 6px);
+    background-size: 6px 1px;
+    background-repeat: repeat-x;
+    background-position: center;
+}
+
+.prose > hr {
+    margin-block: 36px;
+}
+
+.prose :where(img, video, iframe, svg) {
+    display: block;
+    max-width: 100%;
+}
+
+.prose :where(img, video, svg) {
+    height: auto;
+}
+
+.prose img {
+    filter: grayscale(1);
+    outline: 1px solid rgb(0 0 0 / 10%);
+    outline-offset: -1px;
+}
+
+.prose figure img {
+    width: 100%;
+}
+
+.prose figcaption {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.75;
+    text-align: center;
+}
+
+.prose iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: 0;
+}
+
+.prose audio {
+    width: 100%;
+}
+
+.prose .table-scroll {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+}
+
+.prose table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    line-height: 1.6;
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: normal;
+}
+
+.prose caption {
+    padding-bottom: 13px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.prose :where(th, td) {
+    padding: 13px 16px 13px 0;
+    border-bottom: 1px solid rgb(0 0 0 / 20%);
+    text-align: left;
+    vertical-align: top;
+}
+
+.prose th {
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.prose thead th {
+    border-bottom: 2px solid var(--ink);
+}
+
+.prose tr > :last-child {
+    padding-right: 0;
+}
+
+.prose tfoot :where(th, td) {
+    border-bottom: 0;
+}
+
+.prose dt {
+    font-weight: 700;
+}
+
+.prose dd {
+    margin: 5px 0 0 24px;
+}
+
+.prose dd + dt {
+    margin-top: 20px;
+}
+
+.prose :not(pre) > code,
+.prose kbd,
+.prose samp {
+    padding: 2px 5px;
+    background: #f0f0f0;
+    font-family: var(--font-ui);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+.prose kbd {
+    border: 1px solid rgb(0 0 0 / 25%);
+    border-bottom-width: 2px;
+    border-radius: 3px;
+}
+
+.prose pre {
+    overflow-x: auto;
+    padding: 20px;
+    border-block: 1px solid rgb(0 0 0 / 20%);
+    background: #f5f5f5;
+    font-family: var(--font-ui);
+    font-size: 14px;
+    line-height: 1.75;
+    white-space: pre;
+    overflow-wrap: normal;
+    tab-size: 4;
+}
+
+.prose pre code {
+    padding: 0;
+    background: none;
+    font: inherit;
+}
+
+.prose details {
+    padding-block: 15px;
+    border-block: 1px dotted rgb(0 0 0 / 30%);
+}
+
+.prose summary {
+    font-family: var(--font-book);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.prose details > :not(summary) {
+    margin-top: 15px;
+}
+
+.prose .footnotes {
+    margin-top: 42px;
+    font-size: 14px;
+}
+
+.prose .footnotes ol {
+    margin-top: 20px;
+}
+
+.prose [id] {
+    scroll-margin-top: 24px;
+}
+
+.entry-end {
+    padding-top: 28px;
+    font-size: 23px;
+    text-align: center;
+}
+
+.card-footer {
+    padding: 25px 38px 29px;
+}
+
+.card-navigation,
+.turn-buttons {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.card-navigation {
+    justify-content: space-between;
+}
+
+.button {
+    display: inline-flex;
+    min-height: 38px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 6px 17px;
+    border: 2px solid var(--ink);
+    border-radius: 6px;
+    color: var(--ink);
+    background: var(--paper);
+    box-shadow: 2px 2px 0 var(--ink);
+    font-family: var(--font-book);
+    font-size: 17px;
+    line-height: 1.25;
+    text-decoration: none;
+}
+
+.index-button {
+    min-width: 100px;
+}
+
+.button:not(:disabled):hover {
+    color: var(--paper);
+    background: var(--ink);
+}
+
+.button:not(:disabled):active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+.button:disabled {
+    border-color: #999;
+    color: #777;
+    box-shadow: 2px 2px 0 #aaa;
+}
+
+.colophon {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0 4px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.colophon p {
+    margin: 0;
+    background: #e5e5e5;
+    box-shadow: 4px 0 #e5e5e5, -4px 0 #e5e5e5;
+}
+
+kbd {
+    font: inherit;
+}
+
+.index-heading {
+    padding-block: 22px 26px;
+}
+
+.index-heading h1 {
+    max-width: none;
+}
+
+.index-intro {
+    margin: 16px 0 0;
+    font-size: 15px;
+    line-height: 1.75;
+}
+
+.entry-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.entry-list li + li {
+    border-top: 1px dotted rgb(0 0 0 / 28%);
+}
+
+.entry-list a {
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    align-items: baseline;
+    gap: 12px;
+    padding-block: 18px;
+    text-decoration: none;
+}
+
+.entry-list a:hover .entry-list-title {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.entry-list-number,
+.entry-list time {
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+}
+
+.entry-list-title {
+    font-family: var(--font-book);
+    font-size: 21px;
+}
+
+.sr-only {
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.no-script {
+    padding: 20px;
+    background: var(--paper);
+    text-align: center;
+}
+
+@media (max-width: 640px) {
+    .journal {
+        width: calc(100% - 42px);
+        justify-content: flex-start;
+        padding-block: 28px;
+    }
+
+    .masthead {
+        padding: 19px 22px 17px;
+    }
+
+    .journal-name {
+        font-size: 22px;
+    }
+
+    .card-content {
+        min-height: 480px;
+        padding: 25px 24px 8px;
+    }
+
+    .entry-heading {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 18px;
+        padding-bottom: 26px;
+    }
+
+    .landscape {
+        align-self: flex-end;
+        width: 180px;
+        height: 106px;
+    }
+
+    .date {
+        font-size: 16px;
+    }
+
+    .prose :where(table, caption, pre, figcaption, blockquote cite, .footnotes) {
+        font-size: 16px;
+    }
+
+    .card-footer {
+        padding: 26px 22px;
+    }
+
+    .card-navigation,
+    .turn-buttons {
+        gap: 10px;
+    }
+
+    .button {
+        min-height: 46px;
+        gap: 5px;
+        padding-inline: 10px;
+        font-size: 16px;
+    }
+
+    .index-button {
+        min-width: 65px;
+    }
+
+    .button span {
+        display: none;
+    }
+
+    .colophon {
+        justify-content: center;
+    }
+
+    .keyboard-hint {
+        display: none;
+    }
+
+    .index-heading {
+        padding-top: 6px;
+    }
+
+    .index-intro {
+        font-size: 16px;
+    }
+
+    .entry-list a {
+        grid-template-columns: 1fr auto;
+        gap: 6px 12px;
+    }
+
+    .entry-list-number {
+        display: none;
+    }
+
+    .entry-list-title {
+        grid-column: 1 / -1;
+    }
+
+    .entry-list time {
+        font-size: 14px;
+    }
+}

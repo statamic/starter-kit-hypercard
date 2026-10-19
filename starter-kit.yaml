@@ -1,0 +1,8 @@
+export_paths:
+  - app/ViewModels/Journal.php
+  - config/filesystems.php
+  - content
+  - resources/blueprints
+  - resources/views
+  - public/journal
+  - public/assets/landscape.svg

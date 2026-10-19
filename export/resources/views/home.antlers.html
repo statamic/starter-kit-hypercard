@@ -1,0 +1,20 @@
+<section aria-labelledby="index-title">
+    <div class="index-heading">
+        {{ if journal:author_name }}
+            <p class="date">A journal by {{ journal:author_name | entities }}</p>
+        {{ /if }}
+        <h1 id="index-title">{{ title | entities }}</h1>
+        {{ if intro }}<p class="index-intro">{{ intro | entities }}</p>{{ /if }}
+    </div>
+    <ol class="entry-list" role="list">
+        {{ journal_entries }}
+            <li>
+                <a href="{{ url }}">
+                    <span class="entry-list-number">{{ index | add:1 }}</span>
+                    <span class="entry-list-title">{{ title | entities }}</span>
+                    <time datetime="{{ date format='Y-m-d' }}">{{ date format="M d" }}</time>
+                </a>
+            </li>
+        {{ /journal_entries }}
+    </ol>
+</section>

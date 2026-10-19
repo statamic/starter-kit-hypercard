@@ -1,0 +1,16 @@
+{
+    "name": "statamic/starter-kit-hypercard",
+    "extra": {
+        "statamic": {
+            "name": "HyperCard",
+            "description": "A simple, HyperCard-inspired journal with Markdown and Bard."
+        }
+    },
+    "description": "A HyperCard-inspired Statamic journal with Markdown and Bard editors.",
+    "type": "statamic-starter-kit",
+    "license": "MIT",
+    "require": {
+        "php": "^8.3",
+        "statamic/cms": "^6.0"
+    }
+}

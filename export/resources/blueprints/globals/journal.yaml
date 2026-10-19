@@ -1,0 +1,19 @@
+title: Journal settings
+tabs:
+  main:
+    display: Journal
+    sections:
+      - fields:
+          - handle: name
+            field:
+              type: text
+              display: Journal name
+              validate: required
+          - handle: author_name
+            field:
+              type: text
+              display: Author name
+          - handle: description
+            field:
+              type: text
+              display: Description

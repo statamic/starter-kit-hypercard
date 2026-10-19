@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="272" height="160" viewBox="0 0 272 160">
+    <defs>
+        <pattern id="dots" width="4" height="4" patternUnits="userSpaceOnUse">
+            <path d="M0 0h1v1H0zM2 2h1v1H2z"/>
+        </pattern>
+        <pattern id="sparse" width="7" height="6" patternUnits="userSpaceOnUse">
+            <path d="M1 1h1v1H1zM4 4h1v1H4z"/>
+        </pattern>
+        <pattern id="lines" width="5" height="3" patternUnits="userSpaceOnUse">
+            <path d="M0 0h3v1H0z"/>
+        </pattern>
+        <g id="pine">
+            <path d="M0 0 6 10H3l6 9H5l7 11H7l7 10H2v10h-4V40h-12l7-10h-5l7-11h-4l6-9h-3z"/>
+            <path d="m-2 15-4 6h4m1 5-6 7h5m5-6 4 6H3" fill="none" stroke="white" stroke-width="1"/>
+        </g>
+    </defs>
+    <g fill="none" stroke="#111" stroke-width="1.5" stroke-linejoin="round">
+        <path d="m14 103 34-36 15 12 42-58 16 19 12-8 34 40 15-17 39 39 24 9" fill="white"/>
+        <path d="m23 103 26-28 14 10 42-58-12 37-11 4-8 24 31-20 10 22 18-38 34 31 15-26 30 42" fill="url(#sparse)" stroke="none"/>
+        <path d="m105 21-1 21-11 22 13-10 6 7 9-21m12-8 1 21 13 19-15-6-7 13m57-24 2 18 10 9m-131-3-7 14-8 3"/>
+        <path d="m88 76-8 18m30-25 6 12m20-7 11 12m9-10 7 7m-120 8-9 9m170-9 12 9"/>
+        <path d="M3 114q28-16 58-6t58-1q46-18 85-1t65 2v16H3z" fill="url(#dots)" stroke="none"/>
+        <path d="M0 125q47-6 84 0t94-2q53-5 94 2M26 131h54m17 4h48m40-4h52m-174 9h49m46-2h54m-177 7h30m61 3h54m29-7h31" stroke-width="1"/>
+    </g>
+    <g fill="#111">
+        <use href="#pine" transform="translate(231 62) scale(1.2)"/>
+        <use href="#pine" transform="translate(252 82) scale(.8)"/>
+        <use href="#pine" transform="translate(213 91) scale(.65)"/>
+        <use href="#pine" transform="translate(25 88) scale(.65)"/>
+        <use href="#pine" transform="translate(10 103) scale(.4)"/>
+        <path d="m187 116 9-3 6 4 13-3 9 5 17-5 8 4 17-4v9h-79z"/>
+        <path d="M7 132h13v1H7zm144-3h17v1h-17zM0 141h15v1H0zm231-4h17v1h-17zm-44 13h29v1h-29z"/>
+    </g>
+</svg>

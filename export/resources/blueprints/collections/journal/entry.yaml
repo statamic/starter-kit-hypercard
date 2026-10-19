@@ -1,0 +1,97 @@
+title: Journal entry
+tabs:
+  main:
+    display: Content
+    sections:
+      - fields:
+          - handle: title
+            field:
+              type: text
+              display: Title
+              validate: required
+          - handle: content_format
+            field:
+              type: button_group
+              display: Editor
+              options:
+                markdown: Markdown
+                rich: Rich content
+              default: markdown
+              validate:
+                - required
+                - in:markdown,rich
+          - handle: markdown_content
+            field:
+              type: markdown
+              display: Content
+              container: assets
+              automatic_line_breaks: false
+              automatic_links: true
+              smartypants: true
+              antlers: false
+              always_save: true
+              if:
+                content_format: equals markdown
+          - handle: rich_content
+            field:
+              type: bard
+              display: Content
+              container: assets
+              always_save: true
+              remove_empty_nodes: trim
+              reading_time: true
+              word_count: true
+              buttons:
+                - h2
+                - h3
+                - h4
+                - bold
+                - italic
+                - underline
+                - strikethrough
+                - unorderedlist
+                - orderedlist
+                - quote
+                - anchor
+                - image
+                - table
+                - code
+                - codeblock
+                - horizontalrule
+                - removeformat
+              if:
+                content_format: equals rich
+  sidebar:
+    display: Settings
+    sections:
+      - fields:
+          - handle: slug
+            field:
+              type: slug
+              validate:
+                - required
+          - handle: date
+            field:
+              type: date
+              display: Date
+              time_enabled: false
+              format: Y-m-d
+              required: true
+              validate: required
+          - handle: illustration
+            field:
+              type: assets
+              display: Illustration
+              container: assets
+              max_files: 1
+              mode: grid
+          - handle: show_illustration
+            field:
+              type: toggle
+              display: Show illustration
+              default: true
+          - handle: summary
+            field:
+              type: textarea
+              display: Summary
+              character_limit: 160

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="{{ site:short_locale }}">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="description" content="{{ summary ?? journal:description | entities }}">
+        <title>{{ title | entities }} — {{ journal:name | entities }}</title>
+        <link rel="canonical" href="{{ permalink }}">
+        <link rel="stylesheet" href="/journal/styles.css">
+        <script defer src="/journal/journal.js"></script>
+        <script defer src="/journal/alpine.min.js"></script>
+    </head>
+    <body>
+        <main class="journal" x-data="journal" @keydown.window="handleKey($event)">
+            <div class="stack">
+                <div class="card">
+                    <header class="masthead">
+                        <a class="journal-name" href="/">{{ journal:name | entities }}</a>
+                        <p class="card-number">{{ if is_journal_entry }}Card {{ card_number }}{{ else }}The index{{ /if }}</p>
+                    </header>
+                    <div class="card-content">
+                        {{ template_content }}
+                    </div>
+                    {{ partial:navigation }}
+                </div>
+            </div>
+            <div class="colophon">
+                <p>{{ journal:description | entities }}</p>
+                <p class="keyboard-hint"><kbd>←</kbd> <kbd>→</kbd> to turn the cards</p>
+            </div>
+        </main>
+    </body>
+</html>

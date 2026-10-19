@@ -1,0 +1,29 @@
+<section aria-labelledby="entry-title">
+    <div class="entry-heading">
+        <div class="entry-heading-text">
+            <p class="date">
+                <time datetime="{{ date format='Y-m-d' }}">{{ date format="F j, Y" }}</time>
+            </p>
+            <h1 id="entry-title">{{ title | entities }}</h1>
+        </div>
+        {{ if show_illustration }}
+            {{ if illustration }}
+                {{ illustration }}
+                    <img class="landscape" src="{{ url }}" alt="{{ alt | entities }}" width="272" height="160">
+                {{ /illustration }}
+            {{ else }}
+                <img class="landscape" src="/journal/landscape.svg" alt="" width="272" height="160">
+            {{ /if }}
+        {{ /if }}
+    </div>
+
+    <article class="prose" aria-labelledby="entry-title">
+        {{ if content_format == 'rich' }}
+            {{ rich_content }}
+        {{ else }}
+            {{ markdown_content }}
+        {{ /if }}
+    </article>
+
+    <div class="entry-end" aria-hidden="true">✳</div>
+</section>
