@@ -74,11 +74,9 @@ In an installed site:
 - `public/journal/journal.js` contains the Alpine enhancements.
 - `public/assets/` holds editable media.
 
-This repository follows Statamic 6’s [starter-kit package structure](https://statamic.dev/starter-kits/creating-a-starter-kit): installable files live under `export/`, alongside root package metadata and `starter-kit.yaml`. Develop in a Statamic application, keep the package metadata in its `package/` directory, and export back to this checkout:
+The repository mirrors the installed site: `app/`, `config/`, `content/`, `public/`, and `resources/` live at the root, with the package metadata and `starter-kit.yaml`. The manifest lists the paths Statamic installs.
 
-```sh
-php please starter-kit:export ~/Sites/starter-kit-hypercard
-```
+Develop in a separate Statamic application. When using the Statamic 6 exporter, export to a temporary directory, then copy the generated `export/` contents into this repository root and the package metadata alongside them. Exporting directly over this checkout would recreate the wrapper directory.
 
 The package does not include application bootstrap files, `.env`, users, or credentials. Alpine.js 3.14.9 is bundled with its MIT license in `public/journal/ALPINE-LICENSE.md`.
 
