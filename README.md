@@ -1,24 +1,26 @@
 <!-- statamic:hide -->
-# Statamic Starter Kit: HyperCard
+<p align="center"><img src="https://statamic.com/assets/branding/squircle/statamic-mark-lime.svg" width="100" alt="Statamic Logo" /></p>
+
+<h1 align="center">Statamic Starter Kit: HyperCard</h1>
 <!-- /statamic:hide -->
 
-A simple journal inspired by HyperCard. Black-and-white cards, a dithered backdrop, and a small stack of ordinary days. Write in Markdown or rich content, one entry at a time.
+A personal journal inspired by classic HyperCard stacks. Black-and-white cards, pixel-patterned backgrounds, and a place to write about your day.
 
 ## Features
 
-- A monochrome card stack with classic outlined buttons and a mountain illustration.
-- Dated journal entries, a chronological index, and previous/next card navigation.
-- A per-entry **Markdown / Rich content** editor choice, using Statamic’s native Markdown and Bard fields.
-- Separate drafts for each editor. Switching formats preserves both; it does not automatically convert content.
-- Styles for headings, nested lists, quotes, images, captions, tables, code, and long links.
-- Editable journal name, author, description, index copy, and entry illustrations.
-- Arrow-key navigation and scrollable wide tables, enhanced with Alpine.js.
-- Server-rendered Antlers templates and plain CSS. No frontend build step.
-- Markdown and Bard sample entries, plus a kitchen-sink content example.
+- A simple journal with a chronological index and one entry per card.
+- Your choice of [Markdown](https://statamic.dev/fieldtypes/markdown) or [Bard](https://statamic.dev/fieldtypes/bard), selected in each entry’s editor.
+- Keyboard shortcuts for navigation: left and right arrows turn the cards.
+- Customizable journal name, author, description, and illustrations.
+- Headings, lists, quotes, tables, images, captions, and code blocks.
+- Automatic grayscale treatment for images in your entries.
+- Responsive layouts, with Antlers templates and a little [Alpine.js](https://alpinejs.dev) for interactions.
+- Plain CSS and included frontend assets. No build step required.
+- Sample entries in both formats, plus a kitchen-sink page to explore the styles.
 
-## Quick start
+## Quick Start
 
-Requires Statamic 6 and PHP 8.3 or newer. The kit works with Statamic Core.
+### 1. Create a new site
 
 Create a site with the [Statamic CLI](https://github.com/statamic/cli):
 
@@ -32,54 +34,42 @@ Or install into a fresh [Statamic site](https://statamic.dev/installation):
 php please starter-kit:install statamic/starter-kit-hypercard --clear-site
 ```
 
-The `--clear-site` option replaces existing site content. Use a fresh installation or back up your site first.
+This kit requires Statamic 6 and PHP 8.3+, and works with Statamic Core. The `--clear-site` option replaces existing site content, so start with a fresh installation.
 
-Follow the installer’s prompts to create a user, then visit `/cp` to start writing. You can also create a super user with:
+### 2. Make a user
+
+Follow the installer’s prompts to create a super user. You can also create one afterward:
 
 ```sh
 php please make:user
 ```
 
-All frontend assets are included. There is no npm install or build command to run.
+### 3. Do your thing!
 
-### Installing from a local checkout
+With [Laravel Herd](https://herd.laravel.com), your site should be available at `http://your-site.test`. Visit `/cp` to log in and start writing. All frontend assets are included, so there’s nothing to compile.
 
-Register this checkout as a Composer path repository in a fresh Statamic application:
+## Writing and Customization
+
+- **Collections → Journal:** write an entry, choose its date, and select **Markdown** or **Rich content**. Each editor keeps its own draft when you switch; switching does not convert between formats.
+- **Entry sidebar:** choose an illustration, use the included mountain drawing, or hide it altogether. Both editors can upload and insert images from the Assets container.
+- **Collections → Pages → Home:** edit the index heading and introduction.
+- **Globals → Journal settings:** change the journal name, author, and description. “Ordinary Days” is the sample publication name.
+
+Published entries appear newest first. Drafts and future-dated entries stay out of the index and card navigation.
+
+To customize the design, edit `resources/views/` and `public/journal/styles.css`. Alpine enhancements live in `public/journal/journal.js`.
+
+## Local Development
+
+Keep the runnable Statamic application separate from this starter-kit repository. To install from a local checkout, run these commands in a fresh application:
 
 ```sh
-composer config repositories.hypercard path ~/Sites/starter-kit-hypercard
+composer config repositories.hypercard path /absolute/path/to/starter-kit-hypercard
 php please starter-kit:install statamic/starter-kit-hypercard --local --clear-site
 ```
 
-## Writing and customization
-
-**Collections → Journal:** create a dated entry and choose **Markdown** or **Rich content**. Only the selected editor is shown. Both field values are retained when you save; the public page renders the selected format. Bard includes headings, lists, links, images, tables, quotes, and code. Markdown also accepts inline HTML.
-
-The entry sidebar has an optional illustration and a toggle to hide it. When no image is selected, the kit uses its mountain drawing. Both editors can browse and upload to the Assets container. Images in the journal body render in grayscale.
-
-**Collections → Pages → Home:** edit the index heading and introduction.
-
-**Globals → Journal settings:** edit the journal name, author, and description. “Ordinary Days” is the sample publication name; it is not hardcoded into the templates.
-
-Entries appear newest first. Drafts and future-dated entries are excluded from the public index and card navigation. Normal links work without JavaScript; Alpine adds left/right arrow-key navigation and horizontally scrollable tables. The card stays anchored to the top, with no transition animation.
-
-## Templates and styles
-
-In an installed site:
-
-- `resources/views/` contains the Antlers layout, entry and index templates, navigation partial, and 404 page.
-- `resources/blueprints/collections/journal/entry.yaml` defines the conditional editors and entry settings.
-- `app/ViewModels/Journal.php` supplies published entries, card numbers, and adjacent-card links.
-- `public/journal/styles.css` contains the layout and prose styles.
-- `public/journal/journal.js` contains the Alpine enhancements.
-- `public/assets/` holds editable media.
-
-The repository mirrors the installed site: `app/`, `config/`, `content/`, `public/`, and `resources/` live at the root, with the package metadata and `starter-kit.yaml`. The manifest lists the paths Statamic installs.
-
-Develop in a separate Statamic application. When using the Statamic 6 exporter, export to a temporary directory, then copy the generated `export/` contents into this repository root and the package metadata alongside them. Exporting directly over this checkout would recreate the wrapper directory.
-
-The package does not include application bootstrap files, `.env`, users, or credentials. Alpine.js 3.14.9 is bundled with its MIT license in `public/journal/ALPINE-LICENSE.md`.
+The repository’s root folders mirror the installed site. `starter-kit.yaml` lists the files included in an installation. When using the Statamic 6 exporter, export to a temporary directory and copy its generated `export/` contents into this repository root, with the package metadata alongside them.
 
 ## Contributing
 
-Contributions are welcome. Please read the [code of conduct](https://github.com/statamic/cms/wiki/Code-of-Conduct) before contributing.
+Contributions are always welcome, no matter how large or small. Before contributing, please read the [code of conduct](https://github.com/statamic/cms/wiki/Code-of-Conduct).
