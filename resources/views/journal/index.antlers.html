@@ -1,10 +1,17 @@
 <section aria-labelledby="index-title">
-    <div class="index-heading">
-        {{ if site:author_name }}
-            <p class="date">A journal by {{ site:author_name | entities }}</p>
+    <div class="entry-heading index-heading">
+        <div class="entry-heading-text">
+            {{ if site:author_name }}
+                <p class="date">A journal by {{ site:author_name | entities }}</p>
+            {{ /if }}
+            <h1 id="index-title">{{ title | entities }}</h1>
+            {{ if intro }}<p class="index-intro">{{ intro | entities }}</p>{{ /if }}
+        </div>
+        {{ if site:illustration }}
+            {{ site:illustration }}
+                <img class="landscape" src="{{ url }}" alt="{{ alt | entities }}" width="272" height="160">
+            {{ /site:illustration }}
         {{ /if }}
-        <h1 id="index-title">{{ title | entities }}</h1>
-        {{ if intro }}<p class="index-intro">{{ intro | entities }}</p>{{ /if }}
     </div>
     <ol class="entry-list" role="list">
         {{ collection:journal sort="date:desc|title:asc" }}
