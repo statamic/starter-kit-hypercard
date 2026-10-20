@@ -11,8 +11,10 @@
                 {{ illustration }}
                     <img class="landscape" src="{{ url }}" alt="{{ alt | entities }}" width="272" height="160">
                 {{ /illustration }}
-            {{ else }}
-                <img class="landscape" src="/journal/landscape.svg" alt="" width="272" height="160">
+            {{ elseif site:illustration }}
+                {{ site:illustration }}
+                    <img class="landscape" src="{{ url }}" alt="{{ alt | entities }}" width="272" height="160">
+                {{ /site:illustration }}
             {{ /if }}
         {{ /if }}
     </div>

@@ -1,12 +1,18 @@
 <!doctype html>
-<html lang="{{ site:short_locale }}">
+<html lang="{{ config:app:locale }}">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
-        <meta name="description" content="{{ summary ?? journal:description | entities }}">
-        <title>{{ title | entities }} — {{ journal:name | entities }}</title>
-        <link rel="canonical" href="{{ permalink }}">
+        {{ if {installed:statamic/seo-pro} }}
+            {{ seo_pro:meta }}
+        {{ else }}
+            {{ meta_title = title ?? 'Page not found' }}
+            {{ meta_description = summary ?? intro ?? site:description }}
+            <title>{{ meta_title | entities }} — {{ site:name | entities }}</title>
+            <meta name="description" content="{{ meta_description | strip_tags | decode | entities }}">
+            <link rel="canonical" href="{{ current_url | explode('?') | first | entities }}">
+        {{ /if }}
         <link rel="stylesheet" href="/journal/styles.css">
         <script defer src="/journal/journal.js"></script>
         <script defer src="/journal/alpine.min.js"></script>
@@ -16,8 +22,16 @@
             <div class="stack">
                 <div class="card">
                     <header class="masthead">
-                        <a class="journal-name" href="/">{{ journal:name | entities }}</a>
-                        <p class="card-number">{{ if is_journal_entry }}Card {{ card_number }}{{ else }}The index{{ /if }}</p>
+                        <a class="journal-name" href="/">{{ site:name | entities }}</a>
+                        <p class="card-number">
+                            {{ if collection:handle == 'journal' }}
+                                {{ collection:next sort="date:desc|title:asc" as="older_cards" }}
+                                    Card {{ total_results | add:1 | str_pad_left:3:0 }}
+                                {{ /collection:next }}
+                            {{ else }}
+                                The index
+                            {{ /if }}
+                        </p>
                     </header>
                     <div class="card-content">
                         {{ template_content }}
@@ -26,7 +40,7 @@
                 </div>
             </div>
             <div class="colophon">
-                <p>{{ journal:description | entities }}</p>
+                <p>{{ site:description | entities }}</p>
                 <p class="keyboard-hint"><kbd>←</kbd> <kbd>→</kbd> to turn the cards</p>
             </div>
         </main>

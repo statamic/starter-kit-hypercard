@@ -1,20 +1,31 @@
 <footer class="card-footer">
     <nav class="card-navigation" aria-label="Journal navigation">
-        <a class="button index-button" href="/" {{ unless is_journal_entry }}aria-current="page"{{ /unless }}>Index</a>
+        <a class="button index-button" href="/" {{ if is_homepage }}aria-current="page"{{ /if }}>Index</a>
         <div class="turn-buttons">
-            {{ if previous_card }}
-                {{ previous_card }}
-                    <a class="button" href="{{ url }}" data-card-previous><span aria-hidden="true">←</span> Previous</a>
-                {{ /previous_card }}
+            {{ if collection:handle == 'journal' }}
+                {{ collection:previous sort="date:desc|title:asc" limit="1" }}
+                    {{ if no_results }}
+                        <button class="button" type="button" disabled><span aria-hidden="true">←</span> Previous</button>
+                    {{ else }}
+                        <a class="button" href="{{ url }}" data-card-previous><span aria-hidden="true">←</span> Previous</a>
+                    {{ /if }}
+                {{ /collection:previous }}
+                {{ collection:next sort="date:desc|title:asc" limit="1" }}
+                    {{ if no_results }}
+                        <button class="button" type="button" disabled>Next <span aria-hidden="true">→</span></button>
+                    {{ else }}
+                        <a class="button" href="{{ url }}" data-card-next>Next <span aria-hidden="true">→</span></a>
+                    {{ /if }}
+                {{ /collection:next }}
             {{ else }}
                 <button class="button" type="button" disabled><span aria-hidden="true">←</span> Previous</button>
-            {{ /if }}
-            {{ if next_card }}
-                {{ next_card }}
-                    <a class="button" href="{{ url }}" data-card-next>Next <span aria-hidden="true">→</span></a>
-                {{ /next_card }}
-            {{ else }}
-                <button class="button" type="button" disabled>Next <span aria-hidden="true">→</span></button>
+                {{ collection:journal sort="date:desc|title:asc" limit="1" }}
+                    {{ if no_results }}
+                        <button class="button" type="button" disabled>Next <span aria-hidden="true">→</span></button>
+                    {{ else }}
+                        <a class="button" href="{{ url }}" data-card-next>Next <span aria-hidden="true">→</span></a>
+                    {{ /if }}
+                {{ /collection:journal }}
             {{ /if }}
         </div>
     </nav>

@@ -1,5 +1,4 @@
 export_paths:
-  - app/ViewModels/Journal.php
   - config/filesystems.php
   - content
   - resources/blueprints

@@ -59,9 +59,9 @@ With [Laravel Herd](https://herd.laravel.com), your site should be available at 
 ## Writing and Customization
 
 - **Collections → Journal:** write an entry, choose its date, and select **Markdown** or **Rich content**. Each editor keeps its own draft when you switch; switching does not convert between formats.
-- **Entry sidebar:** choose an illustration, use the included mountain drawing, or hide it altogether. Both editors can upload and insert images from the Assets container.
+- **Entry sidebar:** choose an illustration, use the site’s default, or hide it altogether. Both editors can upload and insert images from the Assets container.
 - **Collections → Pages → Home:** edit the index heading and introduction.
-- **Globals → Journal settings:** change the journal name, author, and description. “Ordinary Days” is the sample publication name.
+- **Globals → Site:** change the journal name, author, description, and default illustration. “Ordinary Days” is the sample publication name.
 
 Published entries appear newest first. Drafts and future-dated entries stay out of the index and card navigation.
 

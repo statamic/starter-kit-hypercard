@@ -1,13 +1,13 @@
-title: Journal settings
+title: Site
 tabs:
   main:
-    display: Journal
+    display: Site
     sections:
       - fields:
           - handle: name
             field:
               type: text
-              display: Journal name
+              display: Site name
               validate: required
           - handle: author_name
             field:
@@ -17,3 +17,10 @@ tabs:
             field:
               type: text
               display: Description
+          - handle: illustration
+            field:
+              type: assets
+              display: Default illustration
+              container: assets
+              max_files: 1
+              mode: grid

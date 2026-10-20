@@ -1,5 +1,5 @@
 title: Journal
-template: entry
+template: journal/show
 layout: layout
 revisions: false
 route: '/journal/{slug}'
@@ -12,6 +12,3 @@ preview_targets:
   - label: Entry
     url: '{permalink}'
     refresh: true
-
-inject:
-  view_model: App\ViewModels\Journal
