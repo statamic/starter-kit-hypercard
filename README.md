@@ -18,6 +18,14 @@ A personal journal inspired by classic HyperCard stacks. Black-and-white cards, 
 - Plain CSS and included frontend assets. No build step required.
 - Sample entries in both formats, plus a kitchen-sink page to explore the styles.
 
+<!-- statamic:hide -->
+## Screenshots
+
+| Journal index | Journal entry |
+| --- | --- |
+| ![HyperCard journal index](https://github.com/statamic/starter-kit-hypercard/raw/main/screenshot-index.jpg) | ![HyperCard journal entry](https://github.com/statamic/starter-kit-hypercard/raw/main/screenshot-entry.jpg) |
+<!-- /statamic:hide -->
+
 ## Quick Start
 
 ### 1. Create a new site
